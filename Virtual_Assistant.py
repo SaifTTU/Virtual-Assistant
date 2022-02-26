@@ -1,3 +1,4 @@
+from Youtube import*
 import speech_recognition as sr
 import pyttsx3
 import datetime
@@ -28,9 +29,18 @@ def take_command():
             if 'alexa' in command:
                 command = command.replace('alexa', '')
             '''
+            
+            phrase = "Youtube RickAsley for me"
+
+            phrase = phrase.lower()
+            if("youtube" in phrase):
+                phrase = phrase.replace("youtube ","")
+
+                print("searching youtube...")
+                youSearch(phrase)
     except:
         pass
-    #return command
+        #return command
 
 
 def run_alexa():
