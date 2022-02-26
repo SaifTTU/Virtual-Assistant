@@ -38,6 +38,29 @@ def take_command():
 
                 print("searching youtube...")
                 youSearch(phrase)
+            if("weather" in phrase):
+                degrees = float(90)
+                
+                celcius = 0
+                response = "it's currently "
+                high = 0
+                low = 0
+                #phrase = "Hey tell me the Weather celcius"
+
+                phrase = phrase.lower()
+                
+                #celcius = float(degrees−32*5/9)
+
+                if( "weather" in phrase):
+                    if("celcius" in phrase):
+                        response +=  str(celcius) + " degrees C°"
+                    else:
+                        response += (str(degrees)+ " degrees F°")
+                    response += " with high's reaching " + str(high)
+                    response += " and " 
+                    response += " with low's reaching " + str(low)
+                    print(response)
+
     except:
         pass
         #return command
