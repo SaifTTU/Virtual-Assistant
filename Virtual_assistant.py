@@ -4,12 +4,11 @@ import datetime
 import pywhatkit
 import wikipedia
 import pyjokes
+import random
 import webbrowser
-from tkinter import *
-import threading
 from websearch import *
 from wiki import *
-from PIL import ImageTk, Image
+from stdres import *
 
 listener = sr.Recognizer()
 alexa = pyttsx3.init()
@@ -34,7 +33,6 @@ def take_command():
                 if 'crystal' in command:
                     command = command.replace('crystal ', '', 1)
                     break
-                
         except:
             pass
     return command
@@ -48,6 +46,9 @@ def run_alexa():
     elif 'google' in phrase:
         phrase=phrase.replace('google ', '', 1)
         googSearch(phrase)
+    elif 'open wikipedia' in phrase:
+        phrase = phrase.replace('open wikipedia ', '', 1)
+        wikiOpen(phrase)
     elif 'wikipedia' in phrase:
         phrase=phrase.replace('wikipedia ', '', 1)
         wikiSearch(phrase)
@@ -69,8 +70,7 @@ def run_alexa():
     elif 'stop' in phrase:
         exit()
     else:
-        talk('I did not get it but I am going to search it for you')
-        pywhatkit.search(phrase)
+        responses(phrase)
         
     
 def runBack():

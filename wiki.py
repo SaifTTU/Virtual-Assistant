@@ -10,10 +10,14 @@ def talk(text):
     alexa.say(text)
     alexa.runAndWait()
 
+def wikiOpen(go):
+    url = wikipedia.page(go).url
+    webbrowser.open(url, new=2)
+
 def wikiSearch(go):
     print(go)
     try:
-        result  = wikipedia.summary(go)
+        result  = wikipedia.summary(go, sentences = 2)
         print(result)
         talk(result)
         
@@ -24,7 +28,12 @@ def wikiSearch(go):
 
 def main():
     go = input("What do you want to look up on Wikipedia? ")
-    wikiSearch(go)
+    if('open wikipedia' in go):
+        go = go.replace('open wikipedia ', '')
+        wikiOpen(go)
+    elif('wikipedia' in go):
+        go = go.replace('wikipedia ', '')
+        wikiSearch(go)
 
 if __name__ == "__main__":
     main()
