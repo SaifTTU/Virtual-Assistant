@@ -1,4 +1,5 @@
 import pygame, sys, os
+from Virtual_assistant import *
 
 clock = pygame.time.Clock()
 
@@ -81,7 +82,9 @@ while True:
         display.blit(questionText, textRect2)
     if(asked==False and totalFrames > 500):
         asked = True
-        command = input("Enter your command: ")
+        
+        command = takeCommand()
+        
         questionText = font.render(command, True, blue, green)
         textRect2 = questionText.get_rect()
         textRect2.center = (WINDOW_SIZE[0] * 2, WINDOW_SIZE[1] * 4)
